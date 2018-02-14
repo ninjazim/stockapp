@@ -7,7 +7,8 @@
     "devNoServer": "webpack --d --watch",
     "dev": "node server.js webpack-dev-server",
     "build": "webpack -p",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-prebuild": "yarn install --production=false",
   },
   "author": "ninjazim",
   "license": "ISC",
