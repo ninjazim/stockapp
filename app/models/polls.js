@@ -3,8 +3,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-
-
 var Poll = new Schema({
 	creator: { type: Schema.Types.ObjectId, ref: 'User' },
 	options: [

@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import styled from 'styled-components';
-import {Doughnut, defaults} from 'react-chartjs-2';
+import { Doughnut, defaults } from 'react-chartjs-2';
 
 defaults.global.backgroundCol
 

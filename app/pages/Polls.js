@@ -3,9 +3,7 @@ import { render } from 'react-dom';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { BASE_URL } from '../config/config';
 
-// import Poll from '../components/Poll';
 import PopularPolls from '../components/PopularPolls';
 import RecentPolls from '../components/RecentPolls';
 

@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { BASE_URL } from '../config/config';
 
 import PollListItem from './PollListItem';
 
@@ -11,22 +10,7 @@ class PopularPolls extends React.Component {
   constructor() {
     super();
     this.state = {
-      polls: [
-        // {
-        //   title: "What's a good Poll?",
-        //   options: [
-        //     {
-        //       creator: "Poll Guy",
-        //       name: "Favorite Color?"
-        //     },
-        //     {
-        //       creator: "Random Guy",
-        //       name: "Favorite Food?"
-        //     },
-        //   ],
-        //   creator: "Poll Guy"
-        // },
-      ]
+      polls: []
     };
   }
 

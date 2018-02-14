@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BASE_URL } from '../config/config';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -13,7 +12,7 @@ class Header extends React.Component {
         <Title to='/'>Poll'd</Title>
         { !this.props.isLoggedIn &&
         <ButtonALink
-          href={`${BASE_URL}/auth/github`}
+          href={`/auth/github`}
           onClick={this.getUser}>
             Sign in with Github
         </ButtonALink>

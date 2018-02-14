@@ -3,8 +3,6 @@ import { render } from 'react-dom';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import {Doughnut} from 'react-chartjs-2';
-import { BASE_URL } from '../config/config';
 
 import Poll from '../components/Poll';
 
@@ -32,7 +30,7 @@ class ViewPoll extends React.Component {
   render () {
     if (Object.keys(this.state).length === 0) {
       return (
-        <Section>
+        <Section red>
 
         </Section>
       );

@@ -2,14 +2,12 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
 
-import { BASE_URL } from './config/config';
 import styled from 'styled-components';
 import axios from 'axios';
 
 import Polls from './pages/Polls';
 import CreatePoll from './pages/CreatePoll';
 import ViewPoll from './pages/ViewPoll';
-import Login from './pages/Login';
 import Profile from './pages/Profile';
 import MyProfile from './pages/MyProfile';
 import Header from './components/Header';
@@ -26,7 +24,7 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    axios.get(`${BASE_URL}/api/user`)
+    axios.get(`/api/user`)
       .then(response => {
         let user = response.data;
         let isLoggedIn = false;
@@ -73,8 +71,6 @@ class App extends React.Component {
                       }}/>
             }
           }} /> */}
-          <Route path="/login" component={Login}/>
-          <Route path="/poll" component={Poll}/>
 
         </div>
       </BrowserRouter>

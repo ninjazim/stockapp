@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BASE_URL } from '../config/config';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -24,8 +23,6 @@ class Poll extends React.Component {
       poll: this.props.poll
     });
   }
-
-
 
   verifyVote() {
     let vote = {

@@ -3,11 +3,8 @@ import { render } from 'react-dom';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { BASE_URL } from '../config/config';
 
-// import Poll from '../components/Poll';
 import PollListItemEditable from '../components/PollListItemEditable';
-// import RecentPolls from '../components/RecentPolls';
 
 class MyProfile extends React.Component {
   constructor() {
@@ -38,8 +35,19 @@ class MyProfile extends React.Component {
   }
 
   render () {
+    if (!this.props.user || !this.props.user.username) {
+      return (
+        <Section>
+          <Container>
+            <p>Sign in to see your polls.</p>
+          </Container>
+        </Section>
+      );
+    }
+
     return (
       <Section>
+        <Logout href='/logout'>Logout</Logout>
         <Container>
           <SectionTitle>
             Your Polls
@@ -71,6 +79,14 @@ const Section = styled.div`
 const Container = styled.div`
   max-width: 800px;
   margin: auto;
+`;
+
+const Logout = styled.a`
+  color: #333;
+  text-align: right;
+  padding-right: 20px;
+  margin-top: -30px;
+  margin-bottom: 30px;
 `;
 
 const SectionTitle = styled.h1`

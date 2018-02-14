@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { BrowserRouter, Route, Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { BASE_URL } from '../config/config';
 
 import Poll from '../components/Poll';
 
@@ -30,14 +29,11 @@ class CreatePoll extends React.Component {
   }
 
   savePoll(poll) {
-    // let blob = { poll: poll, user: this.props.user };
     axios.post(`/api/polls`, poll)
       .then(response => {
         this.setState({
           _id: response.data._id
         });
-        // alert("Poll created! Click OK to view your Poll.")
-        // console.log(response.data);
       })
       .catch(function (error) {
         console.log(error);

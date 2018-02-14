@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
-import { BASE_URL } from '../config/config';
 
 class PollListItemEditable extends React.Component {
   constructor() {
