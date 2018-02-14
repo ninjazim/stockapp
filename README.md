@@ -1,4 +1,4 @@
-# polld
+# Poll'd
 Polling App using Mongo, Express, React, and Node + Github oauth
 
 ## App Overview
