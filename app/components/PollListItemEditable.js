@@ -68,7 +68,7 @@ const ItemContainer = styled.div`
   flex-direction: row;
   box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.1);
   max-width: 800px;
-  min-width: 400px;
+  min-width: 600px;
   margin: 0 0 5px;
   border: 1px solid lightgray;
 `;

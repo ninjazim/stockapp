@@ -74,6 +74,13 @@ class CreatePoll extends React.Component {
         state: { from: '/polls/new' }
       }}/>
     }
+    if (!this.props.isLoggedIn) {
+      return <Redirect to={{
+        pathname: `/polls`,
+        state: { from: '/polls/new' }
+      }}/>
+    }
+
     return (
       <div>
         <Section green>

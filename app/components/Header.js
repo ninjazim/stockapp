@@ -9,7 +9,7 @@ class Header extends React.Component {
     const user = this.props.user;
     return (
       <HeaderContainer>
-        <Title to='/'>Poll'd</Title>
+        <Title to='/polls'>Poll'd</Title>
         { !this.props.isLoggedIn &&
         <ButtonALink
           href={`/auth/github`}

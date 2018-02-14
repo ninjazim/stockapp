@@ -11,7 +11,6 @@ import ViewPoll from './pages/ViewPoll';
 import Profile from './pages/Profile';
 import MyProfile from './pages/MyProfile';
 import Header from './components/Header';
-import Poll from './components/Poll';
 import AllPolls from './pages/AllPolls';
 
 class App extends React.Component {
@@ -52,7 +51,7 @@ class App extends React.Component {
             }}/>
           )} />
           <Switch>
-            <Route exact path="/polls/new" render={(props) => <CreatePoll {...props} /> } />
+            <Route exact path="/polls/new" render={(props) => <CreatePoll user={this.state.user} isLoggedIn={this.state.isLoggedIn} {...props} /> } />
             <Route exact path="/polls/all" render={(props) => <AllPolls {...props} /> } />
             <Route path="/polls/:id" render={(props) => <ViewPoll user={this.state.user} isLoggedIn={this.state.isLoggedIn} {...props}/> } />
             <Route exact path="/polls/" render={(props) => <Polls {...props} /> } />
@@ -61,17 +60,6 @@ class App extends React.Component {
             <Route path="/profile/:username" render={(props) => <Profile user={this.state.user} isLoggedIn={this.state.isLoggedIn} {...props} /> } />
             <Route path="/profile" render={(props) => <MyProfile user={this.state.user} isLoggedIn={this.state.isLoggedIn} {...props} /> } />
           </Switch>
-
-            {/* if (this.state.isLoggedIn) {
-              return <CreatePoll user={user}/>
-            } else {
-              return <Redirect to={{
-                        pathname: '/login',
-                        state: { from: '/polls/new' }
-                      }}/>
-            }
-          }} /> */}
-
         </div>
       </BrowserRouter>
     );
