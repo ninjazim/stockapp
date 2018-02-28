@@ -9,7 +9,10 @@ class Header extends React.Component {
     const user = this.props.user;
     return (
       <HeaderContainer>
-        <Title to='/polls'>Poll'd</Title>
+        <Title to='/polls'>
+          <img src='../../public/img/poll-logo.png' />
+          Poll'd
+        </Title>
         { !this.props.isLoggedIn &&
         <ButtonALink
           href={`/auth/github`}
@@ -50,6 +53,12 @@ const Title = styled(Link)`
   margin: 0;
   line-height: 2.5rem;
   text-decoration: none;
+
+  & img {
+    padding-right: 10px;
+    margin-bottom: -4px;
+    width: 25px;
+  }
 `;
 
 const UserLink = styled(Link)`
