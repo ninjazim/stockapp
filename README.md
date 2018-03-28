@@ -3,10 +3,9 @@ Stock Tracking App using Mongo, Express, React, Node, and web sockets.
 
 ## App Overview
 
-
-
-*
-*
+* Add new stocks by Symbol to view their performance (% change) over time.
+* Remove stocks you no longer want to view.
+* Updates track across clients using web sockets.
 
 
 ## Dev Setup
