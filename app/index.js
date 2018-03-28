@@ -11,7 +11,8 @@ import Chart from './components/Chart';
 import Tickers from './components/Tickers';
 import Footer from './components/Footer';
 
-let ws = new WebSocket(`wss://fcc-stockapp.herokuapp.com/`);
+const HOST = location.origin.replace(/^http/, 'ws')
+let ws = new WebSocket(HOST);
 
 class App extends React.Component {
   constructor() {

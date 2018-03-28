@@ -18,32 +18,4 @@ module.exports = function (app) {
 		.get(function (req, res) {
 			res.sendFile(path + '/public/index.html');
 		});
-
-  var WebSocketServer = require('ws').Server,
-    wss = new WebSocketServer({port: 80});
-
-    wss.on('connection', function (ws) {
-      console.log('client connected');
-    ws.on('message', function (message) {
-      let data = JSON.parse(message);
-      switch(data.type) {
-        case 'added':
-          console.log(`client added ${data.symbol}`);
-          wss.clients.forEach((client) => {
-            if (client !== ws) { client.send(message) }
-
-          });
-          break;
-        case 'removed':
-          console.log(`client removed ${data.symbol}`);
-          wss.clients.forEach((client) => {
-            if (client !== ws) { client.send(message) }
-          });
-          break;
-      }
-    });
-    ws.on('close', function close() {
-      console.log('disconnected');
-    });
-  });
 };
