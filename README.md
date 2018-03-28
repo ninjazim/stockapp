@@ -1,12 +1,12 @@
-# Poll'd
-Polling App using Mongo, Express, React, and Node + Github oauth
+# Stock App
+Stock Tracking App using Mongo, Express, React, Node, and web sockets.
 
 ## App Overview
 
-Create, view, and vote for your favorites in community created polls.
 
-* To Create a poll, first sign in to Github then click the __Create a Poll__ button.
-* If signed in, you can also add new options to existing polls.
+
+*
+*
 
 
 ## Dev Setup

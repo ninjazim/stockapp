@@ -1,57 +1,49 @@
 'use strict';
 
 var path = process.cwd();
-var PollHandler = require(path + '/app/controllers/pollHandler.server.js');
+var StockHandler = require(path + '/app/controllers/stockHandler.server.js');
 
-module.exports = function (app, passport) {
+module.exports = function (app) {
 
-  function isLoggedIn (req, res, next) {
-		if (req.isAuthenticated()) {
-			return next();
-		} else {
-			res.json({});
-		}
-	}
+  var stockHandler = new StockHandler();
 
-  var pollHandler = new PollHandler();
+  app.route('/api/stocks')
+		.get(stockHandler.getStocks)
+    .post(stockHandler.addStock);
 
-  app.route('/auth/github')
-   .get(passport.authenticate('github'));
-
-  app.route('/auth/github/callback')
-    .get(passport.authenticate('github', {
-      successRedirect: '/profile',
-      failureRedirect: '/'
-    }));
-
-  app.route('/logout')
-  	.get(function (req, res) {
-  		req.logout();
-  		res.redirect('/');
-	});
-
-  app.route('/api/user')
-    .get(isLoggedIn, function (req, res) {
-      res.json(req.user.github)
-    });
-
-  app.route('/api/user/:id')
-  	.get(isLoggedIn, function (req, res) {
-  		res.json(req.user.github);
-	});
-
-  app.route('/api/polls')
-		.get(pollHandler.queryParser)
-    .post(isLoggedIn, pollHandler.createPoll);
-
-  app.route('/api/polls/:id')
-    .get(pollHandler.getPollById)
-    .put(pollHandler.updatePoll)
-    .delete(pollHandler.deletePoll);
+  app.route('/api/stocks/:symbol')
+    .delete(stockHandler.removeStock);
 
 	app.route('*')
 		.get(function (req, res) {
 			res.sendFile(path + '/public/index.html');
 		});
 
+  var WebSocketServer = require('ws').Server,
+    wss = new WebSocketServer({port: 40510});
+
+    wss.on('connection', function (ws) {
+      console.log('client connected');
+    ws.on('message', function (message) {
+      let data = JSON.parse(message);
+      switch(data.type) {
+        case 'added':
+          console.log(`client added ${data.symbol}`);
+          wss.clients.forEach((client) => {
+            if (client !== ws) { client.send(message) }
+
+          });
+          break;
+        case 'removed':
+          console.log(`client removed ${data.symbol}`);
+          wss.clients.forEach((client) => {
+            if (client !== ws) { client.send(message) }
+          });
+          break;
+      }
+    });
+    ws.on('close', function close() {
+      console.log('disconnected');
+    });
+  });
 };
