@@ -18,7 +18,7 @@ require('dotenv').load();
 
 mongoose.connect(process.env.MONGO_URI);
 
-// app.use(middleware(compiler,{}));
+app.use(middleware(compiler,{}));
 
 app.use(bodyParser.json());
 
@@ -28,7 +28,7 @@ app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 routes(app);
 
 const WebSocketServer = require('ws').Server;
-const wss = new WebSocketServer({ server: app });
+const wss = new WebSocketServer({port: 40510});
 
 wss.on('connection', function (ws) {
   console.log('client connected');

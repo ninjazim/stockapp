@@ -11,8 +11,8 @@ import Chart from './components/Chart';
 import Tickers from './components/Tickers';
 import Footer from './components/Footer';
 
-const HOST = location.origin.replace(/^http/, 'ws')
-let ws = new WebSocket(HOST);
+// const HOST = location.origin.replace(/^http/, 'ws')
+let ws = new WebSocket('ws://localhost:40510');
 
 class App extends React.Component {
   constructor() {
