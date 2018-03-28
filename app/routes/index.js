@@ -20,7 +20,7 @@ module.exports = function (app) {
 		});
 
   var WebSocketServer = require('ws').Server,
-    wss = new WebSocketServer({server: app});
+    wss = new WebSocketServer({port: 80});
 
     wss.on('connection', function (ws) {
       console.log('client connected');
