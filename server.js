@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const app = express();
-const server = require('http').createServer();
+const server = require('http').Server(app);
 require('dotenv').load();
 
 mongoose.connect(process.env.MONGO_URI);
@@ -28,7 +28,7 @@ app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 routes(app);
 
 const WebSocketServer = require('ws').Server;
-const wss = new WebSocketServer({port: 40510});
+const wss = new WebSocketServer({server: server});
 
 wss.on('connection', function (ws) {
   console.log('client connected');
@@ -57,6 +57,6 @@ wss.on('connection', function (ws) {
 
 const port = process.env.PORT || 8080;
 
-app.listen(port, function () {
+server.listen(port, function () {
 	console.log(`Listening on port ${port}...`);
 });
